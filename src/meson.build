@@ -3,6 +3,9 @@
 sources = [
 	'instruments/instrument.cpp',
 	'instruments/instrument_dumb.cpp',
+	'instrument/piano.cpp',
+	'instrument/guitarra',
+	'instrument/violin',
 	'synth/envelope_adsr.cpp',
 	'synth/midi_score.cpp',
 	'synth/multinote_instr.cpp',
