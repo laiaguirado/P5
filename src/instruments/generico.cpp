@@ -1,6 +1,6 @@
 #include <iostream>
 #include <math.h>
-#include "guitarra.h"
+#include "generico.h"
 #include "keyvalue.h"
 
 #include <stdlib.h>
@@ -8,7 +8,7 @@
 using namespace upc;
 using namespace std;
 
-Guitarra::Guitarra(const std::string &param) 
+Generico::Generico(const std::string &param) 
   : adsr(SamplingRate, param) {
   bActive = false;
   x.resize(BSIZE);
@@ -34,7 +34,7 @@ Guitarra::Guitarra(const std::string &param)
 }
 
 
-void Guitarra::command(long cmd, long note, long vel) {
+void Generico::command(long cmd, long note, long vel) {
   if (cmd == 9) {		//'Key' pressed: attack begins
     bActive = true;
     adsr.start();
@@ -48,7 +48,7 @@ void Guitarra::command(long cmd, long note, long vel) {
 }
 
 
-const vector<float> & Guitarra::synthesize() {
+const vector<float> & Generico::synthesize() {
   if (not adsr.active()) {
     x.assign(x.size(), 0);
     bActive = false;

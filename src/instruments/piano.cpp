@@ -8,7 +8,7 @@
 using namespace upc;
 using namespace std;
 
-piano::piano(const std::string &param) 
+Piano::Piano(const std::string &param) 
   : adsr(SamplingRate, param) {
   bActive = false;
   x.resize(BSIZE);
@@ -34,7 +34,7 @@ piano::piano(const std::string &param)
 }
 
 
-void piano::command(long cmd, long note, long vel) {
+void Piano::command(long cmd, long note, long vel) {
   if (cmd == 9) {		//'Key' pressed: attack begins
     bActive = true;
     adsr.start();
@@ -48,7 +48,7 @@ void piano::command(long cmd, long note, long vel) {
 }
 
 
-const vector<float> & piano::synthesize() {
+const vector<float> & Piano::synthesize() {
   if (not adsr.active()) {
     x.assign(x.size(), 0);
     bActive = false;

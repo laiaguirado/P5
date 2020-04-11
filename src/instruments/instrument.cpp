@@ -3,6 +3,8 @@
 #include "piano.h"
 #include "guitarra.h"
 #include "violin.h"
+#include "generico.h"
+#include "seno.h"
 
 /*
   For each new instrument:
@@ -21,14 +23,20 @@ namespace upc {
     if (name == "InstrumentDumb") {
       pInst = (Instrument *) new InstrumentDumb(parameters);
     }
-    if(name == "piano"){
-      pInst = (Instrument *) new piano(parameters);
+    if(name == "Piano"){
+      pInst = (Instrument *) new Piano(parameters);
     }
-    if(name == "guitarra"){
-      pInst = (Instrument *) new guitarra(parameters);
+    if(name == "Guitarra"){
+      pInst = (Instrument *) new Guitarra(parameters);
     }
-    if(name == "violin"){
-      pInst = (Instrument *) new violin(parameters);
+    if(name == "Violi"){
+      pInst = (Instrument *) new Violi(parameters);
+    }
+    if(name == "Generico"){
+      pInst = (Instrument *) new Generico(parameters);
+    }
+    if(name == "Seno"){
+      pInst = (Instrument *) new Seno(parameters);
     }
     return pInst;
   }

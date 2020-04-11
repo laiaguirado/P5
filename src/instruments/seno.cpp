@@ -1,6 +1,6 @@
 #include <iostream>
 #include <math.h>
-#include "guitarra.h"
+#include "seno.h"
 #include "keyvalue.h"
 
 #include <stdlib.h>
@@ -8,8 +8,9 @@
 using namespace upc;
 using namespace std;
 
-Guitarra::Guitarra(const std::string &param) 
-  : adsr(SamplingRate, param) {
+Seno::Seno(const std::string &param) 
+  : adsr(SamplingRate, param) 
+{
   bActive = false;
   x.resize(BSIZE);
 
@@ -34,21 +35,23 @@ Guitarra::Guitarra(const std::string &param)
 }
 
 
-void Guitarra::command(long cmd, long note, long vel) {
+void Seno::command(long cmd, long note, long vel) {
   if (cmd == 9) {		//'Key' pressed: attack begins
     bActive = true;
     adsr.start();
-    index = 0;
-	A = vel / 127.;
+    phase = 0;
+    float F0=440.0*pow(2,(((float)note-69.0)/12.0))/SamplingRate; // aillant fo de la formula de note que ens donen
+    //F0=f0/SamplingRate;
+    velocidad=vel/128.0;
+    step=2*M_PI*F0;
   }
-  else if (cmd == 8 || cmd==0) {	//'Key' released: sustain ends, release begins
+  else if(cmd==0 || cmd==8){
     adsr.stop();
   }
-  
 }
 
 
-const vector<float> & Guitarra::synthesize() {
+const vector<float> & Seno::synthesize() {
   if (not adsr.active()) {
     x.assign(x.size(), 0);
     bActive = false;
@@ -58,9 +61,10 @@ const vector<float> & Guitarra::synthesize() {
     return x;
 
   for (unsigned int i=0; i<x.size(); ++i) {
-    x[i] = A * tbl[index++];
-    if (index == tbl.size())
-      index = 0;
+    x[i] = 0.3*velocidad*sin(phase);
+    phase = phase + step;
+    while(phase>2*M_PI)
+      phase = phase - 2*M_PI;
   }
   adsr(x); //apply envelope to x and update internal status of ADSR
 

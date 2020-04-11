@@ -8,7 +8,7 @@
 using namespace upc;
 using namespace std;
 
-violi::violi(const std::string &param) 
+Violi::Violi(const std::string &param) 
   : adsr(SamplingRate, param) {
   bActive = false;
   x.resize(BSIZE);
@@ -34,7 +34,7 @@ violi::violi(const std::string &param)
 }
 
 
-void violi::command(long cmd, long note, long vel) {
+void Violi::command(long cmd, long note, long vel) {
   if (cmd == 9) {		//'Key' pressed: attack begins
     bActive = true;
     adsr.start();
@@ -48,7 +48,7 @@ void violi::command(long cmd, long note, long vel) {
 }
 
 
-const vector<float> & violi::synthesize() {
+const vector<float> & Violi::synthesize() {
   if (not adsr.active()) {
     x.assign(x.size(), 0);
     bActive = false;
