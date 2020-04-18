@@ -42,12 +42,66 @@ Para los cuatro casos, deberá incluir una gráfica en la que se visualice clara
 añadir la información necesaria para su correcta interpretación, aunque esa información puede reducirse a
 colocar etiquetas y títulos adecuados en la propia gráfica (se valorará positivamente esta alternativa).
 
+  La primera y la segunda curva ADSR corresponden a un instrumento percusivo, la primera del tipo 1 y la segunda del tipo 2, la tecera corresponde a un instrumento de cuerda frotada como el violin y la última corresponde a un instrumento con una envolvente ADSR genérica.
+   <img src="img/Intruments.PNG" width="640" align="center">
+
 ### Instrumentos Dumb y Seno.
 
 Implemente el instrumento `Seno` tomando como modelo el `InstrumentDumb`. La señal **deberá** formarse
 mediante búsqueda de los valores en una tabla.
 
 - Incluya, a continuación, el código del fichero `seno.cpp` con los métodos de la clase Seno.
+    
+    ```c
+    Seno::Seno(const std::string &param) : adsr(SamplingRate, param) {
+      bActive = false;
+      x.resize(BSIZE);
+
+      KeyValue kv(param);
+      int N;
+      if (!kv.to_int("N",N))
+        N = 40; //default value
+  
+      tbl.resize(N);
+      float phase = 0, step = 2 * M_PI /(float) N;
+      index = 0;
+      for (int i=0; i < N ; ++i) {
+        tbl[i] = sin(phase);
+        phase += step;
+      }
+    }
+    void Seno::command(long cmd, long note, long vel) {
+      if (cmd == 9) {		//'Key' pressed: attack begins
+        bActive = true;
+        adsr.start();
+        phase = 0;
+        float F0=440.0*pow(2,(((float)note-69.0)/12.0))/SamplingRate; 
+        velocidad=vel/128.0;
+        step=2*M_PI*F0;
+      }
+      else if(cmd==0 || cmd==8){
+        adsr.stop();
+      }
+    }
+    const vector<float> & Seno::synthesize() {
+      if (not adsr.active()) {
+        x.assign(x.size(), 0);
+        bActive = false;
+        return x;
+      }   
+      else if (not bActive)
+        return x;
+      for (unsigned int i=0; i<x.size(); ++i) {
+        x[i] = 0.3*velocidad*sin(phase);
+        phase = phase + step;
+        while(phase>2*M_PI)
+          phase = phase - 2*M_PI;
+      }
+      adsr(x); //apply envelope to x and update internal status of ADSR
+      return x;
+    }
+  ```
+
 - Explique qué método se ha seguido para asignar un valor a la señal a partir de los contenidos en la tabla,
   e incluya una gráfica en la que se vean claramente (use pelotitas en lugar de líneas) los valores de la
   tabla y los de la señal generada.
@@ -104,3 +158,7 @@ de su agrado o composición. Se valorará la riqueza instrumental, su modelado y
   `work/music`.
 - Indique, a continuación, la orden necesaria para generar cada una de las señales usando los distintos
   ficheros.
+
+  Hemos creado la banda sonora de "Titanic" a partir de unos instrumentos genererados a partir del instrumento seno y la orden para realizar la ejecución es la siguiente:
+  synth Titanic.orc Titanic.sco Titanic.wav
+

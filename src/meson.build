@@ -3,11 +3,8 @@
 sources = [
 	'instruments/instrument.cpp',
 	'instruments/instrument_dumb.cpp',
-	'instruments/piano.cpp',
-	'instruments/guitarra.cpp',
-	'instruments/violin.cpp',
-	'instruments/generico.cpp',
 	'instruments/seno.cpp',
+	'instruments/instrument_vibrato.cpp',
 	'synth/envelope_adsr.cpp',
 	'synth/midi_score.cpp',
 	'synth/multinote_instr.cpp',

@@ -1,10 +1,7 @@
 #include <iostream>
 #include "instrument_dumb.h"
-#include "piano.h"
-#include "guitarra.h"
-#include "violin.h"
-#include "generico.h"
 #include "seno.h"
+#include "instrument_vibrato.h"
 
 /*
   For each new instrument:
@@ -23,20 +20,11 @@ namespace upc {
     if (name == "InstrumentDumb") {
       pInst = (Instrument *) new InstrumentDumb(parameters);
     }
-    if(name == "Piano"){
-      pInst = (Instrument *) new Piano(parameters);
-    }
-    if(name == "Guitarra"){
-      pInst = (Instrument *) new Guitarra(parameters);
-    }
-    if(name == "Violi"){
-      pInst = (Instrument *) new Violi(parameters);
-    }
-    if(name == "Generico"){
-      pInst = (Instrument *) new Generico(parameters);
-    }
     if(name == "Seno"){
       pInst = (Instrument *) new Seno(parameters);
+    }
+    if(name== "InstrumentVibrato"){
+      pInst = (Instrument *) new InstrumentVibrato(parameters);
     }
     return pInst;
   }
