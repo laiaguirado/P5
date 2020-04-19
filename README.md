@@ -43,6 +43,7 @@ añadir la información necesaria para su correcta interpretación, aunque esa i
 colocar etiquetas y títulos adecuados en la propia gráfica (se valorará positivamente esta alternativa).
 
   La primera y la segunda curva ADSR corresponden a un instrumento percusivo, la primera del tipo 1 y la segunda del tipo 2, la tecera corresponde a un instrumento de cuerda frotada como el violin y la última corresponde a un instrumento con una envolvente ADSR genérica.
+  
    <img src="img/Intruments.PNG" width="640" align="center">
 
 ### Instrumentos Dumb y Seno.

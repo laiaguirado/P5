@@ -11,7 +11,6 @@ namespace upc {
     EnvelopeADSR adsr;
     unsigned int index;
   float velocidad;
-  float nota;
   float phase;
   float step;
     std::vector<float> tbl;

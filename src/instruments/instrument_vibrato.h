@@ -9,13 +9,11 @@
 namespace upc {
   class InstrumentVibrato: public upc::Instrument {
     EnvelopeADSR adsr;
-    unsigned int index;
   float velocidad;
   float phase,phase2;
   float step,step2;
-    int I;
-    int N1,N2;
-    std::vector<float> tbl;
+  float N1,N2;
+  float I;
   public:
     InstrumentVibrato(const std::string &param = "");
     void command(long cmd, long note, long velocity=1); 
