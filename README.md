@@ -121,6 +121,15 @@ mediante búsqueda de los valores en una tabla.
   sinusoidal. Deberá explicar detalladamente cómo se manifiestan los parámetros del efecto (frecuencia e
   índice de modulación) en la señal generada (se valorará que la explicación esté contenida en las propias
   gráficas, sin necesidad de *literatura*).
+    Como podemos observar en la siguiente imagen, se ha aplicado un tremolo. El tremolo es la variación de la amplitud de la señal. Esta variación coge forma de una sinusoide, con una frecuencia de variacion y un indice que determina qué uno porciento de la amplitud variará.
+
+   <img src="img/efecto_tremolo.PNG" width="640" align="center"> 
+
+
+  En la siguiente imagen, observamos una señal a la que se ha aplicado un vibrato. El vibrato es una rapida variación del tono en la duración de una nota que se consigue modulando en frecuencia la señal de audio.
+
+ <img src="img/efecto_vibrato_2.PNG" width="640" align="center"> 
+   
 - Si ha generado algún efecto por su cuenta, explique en qué consiste, cómo lo ha implementado y qué
   resultado ha producido. Incluya, en el directorio `work/ejemplos`, los ficheros necesarios para apreciar
   el efecto, e indique, a continuación, la orden necesaria para generar los ficheros de audio usando el
@@ -135,10 +144,21 @@ deberá venir expresado en semitonos.
 
 - Use el instrumento para generar un vibrato de *parámetros razonables* e incluya una gráfica en la que se
   vea, claramente, la correspondencia entre los valores `N1`, `N2` e `I` con la señal obtenida.
+
+    A continuación observamos dos trozos de señal de audio creadas a partir de los mismos paráteros N1 y N2 pero con diferente I. La primera imagen tenemos una I menor que en la segunda.
+    <img src="img/instr_vibr_1.PNG" width="640" align="center"> 
+       <img src="img/instr_vibr_2.PNG" width="640" align="center">
+
+    Ahora vamos a modificar N2, por lo que aumenta fm y por tanto el vibrato.
+       <img src="img/instr_vibr_4.PNG" width="640" align="center">  
+        <img src="img/instr_vibr_3.PNG" width="640" align="center">  
+        
 - Use el instrumento para generar un sonido tipo clarinete y otro tipo campana. Tome los parámetros del
   sonido (N1, N2 e I) y de la envolvente ADSR del citado artículo. Con estos sonidos, genere sendas escalas
   diatónicas (fichero `doremi.sco`) y ponga el resultado en los ficheros `work/doremi/clarinete.wav` y
   `work/doremi/campana.work`.
+        Los valores tomados para el clarinete son: I= 0.75 , N1=3  , N2=1 .
+        Para la campana: I= 0.75 , N1= 1 , N2=1.4 .
   * También puede colgar en el directorio work/doremi otras escalas usando sonidos *interesantes*. Por
     ejemplo, violines, pianos, percusiones, espadas láser de la
 	[Guerra de las Galaxias](https://www.starwars.com/), etc.
