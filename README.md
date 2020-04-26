@@ -124,12 +124,12 @@ mediante búsqueda de los valores en una tabla.
 
     Como podemos observar en la siguiente imagen, se ha aplicado un tremolo. El tremolo es la variación de la amplitud de la señal. Esta variación coge forma de una sinusoide, con una frecuencia de variación y un índice que determina qué tanto por ciento de la amplitud varia. ( en la primera y última nota no se ha aplicado el efecto para poder ver la diferencia )
 
-      <img src="img/efecto_tremolo.png" width="640" align="center"> 
+  <img src="img/efecto_tremolo.png" width="640" align="center"> 
 
 
   En la siguiente imagen, observamos una señal a la que se ha aplicado un vibrato. El vibrato es una rápida variación del tono en la duración de una nota que se consigue modulando en frecuencia la señal de audio.
 
-      <img src="img/efecto_vibrato_2.png" width="640" align="center"> 
+  <img src="img/efecto_vibrato_2.png" width="640" align="center"> 
    
 - Si ha generado algún efecto por su cuenta, explique en qué consiste, cómo lo ha implementado y qué
   resultado ha producido. Incluya, en el directorio `work/ejemplos`, los ficheros necesarios para apreciar
