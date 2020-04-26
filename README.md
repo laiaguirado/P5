@@ -121,12 +121,13 @@ mediante búsqueda de los valores en una tabla.
   sinusoidal. Deberá explicar detalladamente cómo se manifiestan los parámetros del efecto (frecuencia e
   índice de modulación) en la señal generada (se valorará que la explicación esté contenida en las propias
   gráficas, sin necesidad de *literatura*).
-    Como podemos observar en la siguiente imagen, se ha aplicado un tremolo. El tremolo es la variación de la amplitud de la señal. Esta variación coge forma de una sinusoide, con una frecuencia de variacion y un indice que determina qué uno porciento de la amplitud variará.
+
+    Como podemos observar en la siguiente imagen, se ha aplicado un tremolo. El tremolo es la variación de la amplitud de la señal. Esta variación coge forma de una sinusoide, con una frecuencia de variación y un índice que determina qué tanto por ciento de la amplitud varia. ( en la primera y última nota no se ha aplicado el efecto para poder ver la diferencia )
 
    <img src="img/efecto_tremolo.png" width="640" align="center"> 
 
 
-  En la siguiente imagen, observamos una señal a la que se ha aplicado un vibrato. El vibrato es una rapida variación del tono en la duración de una nota que se consigue modulando en frecuencia la señal de audio.
+  En la siguiente imagen, observamos una señal a la que se ha aplicado un vibrato. El vibrato es una rápida variación del tono en la duración de una nota que se consigue modulando en frecuencia la señal de audio.
 
  <img src="img/efecto_vibrato_2.png" width="640" align="center"> 
    
@@ -146,17 +147,18 @@ deberá venir expresado en semitonos.
   vea, claramente, la correspondencia entre los valores `N1`, `N2` e `I` con la señal obtenida.
 
     A continuación observamos dos trozos de señal de audio creadas a partir de los mismos paráteros N1 y N2 pero con diferente I. La primera imagen tenemos una I menor que en la segunda.
-    <img src="img/instr_vibr_1.PNG" width="640" align="center"> 
-       <img src="img/instr_vibr_2.PNG" width="640" align="center">
+      <img src="img/instr_vibr_1.PNG" width="640" align="center"> 
+      <img src="img/instr_vibr_2.PNG" width="640" align="center">
 
     Ahora vamos a modificar N2, por lo que aumenta fm y por tanto el vibrato.
        <img src="img/instr_vibr_4.PNG" width="640" align="center">  
-        <img src="img/instr_vibr_3.PNG" width="640" align="center">  
+       <img src="img/instr_vibr_3.PNG" width="640" align="center">  
         
 - Use el instrumento para generar un sonido tipo clarinete y otro tipo campana. Tome los parámetros del
   sonido (N1, N2 e I) y de la envolvente ADSR del citado artículo. Con estos sonidos, genere sendas escalas
   diatónicas (fichero `doremi.sco`) y ponga el resultado en los ficheros `work/doremi/clarinete.wav` y
   `work/doremi/campana.work`.
+        
         Los valores tomados para el clarinete son: I= 0.75 , N1=3  , N2=1 .
         Para la campana: I= 0.75 , N1= 1 , N2=1.4 .
   * También puede colgar en el directorio work/doremi otras escalas usando sonidos *interesantes*. Por
@@ -187,5 +189,6 @@ de su agrado o composición. Se valorará la riqueza instrumental, su modelado y
   ficheros.
 
   Hemos creado la banda sonora de "Titanic" a partir de unos instrumentos genererados a partir del instrumento seno y la orden para realizar la ejecución es la siguiente:
+  
   synth Titanic.orc Titanic.sco Titanic.wav
 
