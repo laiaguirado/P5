@@ -159,8 +159,8 @@ deberá venir expresado en semitonos.
   diatónicas (fichero `doremi.sco`) y ponga el resultado en los ficheros `work/doremi/clarinete.wav` y
   `work/doremi/campana.work`.
         
-        Los valores tomados para el clarinete son: I= 0.75 , N1=3  , N2=1 .
-        Para la campana: I= 0.75 , N1= 1 , N2=1.4 .
+    Los valores tomados para el clarinete son: I= 0.75 , N1=3  , N2=1 .
+    Para la campana: I= 0.75 , N1= 1 , N2=1.4 .
   * También puede colgar en el directorio work/doremi otras escalas usando sonidos *interesantes*. Por
     ejemplo, violines, pianos, percusiones, espadas láser de la
 	[Guerra de las Galaxias](https://www.starwars.com/), etc.
