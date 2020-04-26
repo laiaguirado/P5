@@ -77,7 +77,7 @@ mediante búsqueda de los valores en una tabla.
         adsr.start();
         phase = 0;
         float F0=440.0*pow(2,(((float)note-69.0)/12.0))/SamplingRate; 
-        velocidad=vel/128.0;
+        A=vel/128.0;
         step=2*M_PI*F0;
       }
       else if(cmd==0 || cmd==8){
@@ -93,7 +93,7 @@ mediante búsqueda de los valores en una tabla.
       else if (not bActive)
         return x;
       for (unsigned int i=0; i<x.size(); ++i) {
-        x[i] = 0.3*velocidad*sin(phase);
+        x[i] = 0.3*A*sin(phase);
         phase = phase + step;
         while(phase>2*M_PI)
           phase = phase - 2*M_PI;
@@ -106,6 +106,12 @@ mediante búsqueda de los valores en una tabla.
 - Explique qué método se ha seguido para asignar un valor a la señal a partir de los contenidos en la tabla,
   e incluya una gráfica en la que se vean claramente (use pelotitas en lugar de líneas) los valores de la
   tabla y los de la señal generada.
+
+  En la tabla hemos introducido los valores de un periodo de señal, a partir de la longitud de la tabla, N, hemos ido almacenando en primer lugar el sen(0) y a continuación en cada posición de la tabla hasta llegar a N, le hemos ido sumando al argumento del seno 2*Pi/N , haciendo asi que el último valor almacenado en la tabla sea sen(N * 2*Pi/N)= sen(2*Pi)=sen(0), que corresponde a un periodo de la señal.
+
+  Para crear el instrumento Seno necesitamos que la fase del seno empiece por 0, como anteriormente hemos explicado, pero a esta le iremos sumando, en vez de 2*Pi/N , 2*Pi*F0, donde F0 se halla de la siguiente formula : Note=69+12·log2(f0/440) teniendo en cuenta la periodo de muestreo. Por lo que al crear la señal lo que hacemos es ajustar la amplitud, mediante la velocidad indicada usando como
+  valor máximo 128, multiplicada por el seno(phase) donde esta phase se irá incrementando como se indica anteriormente. No hemos podido usar la tabla ya que al usar la frecuencia fundamental, se accede a indices que no hay en la tabla, y hemos solucionado este problema de la manera explicada.
+
 - Si ha implementado la síntesis por tabla almacenada en fichero externo, incluya a continuación el código
   del método `command()`.
 
